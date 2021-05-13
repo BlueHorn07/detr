@@ -128,22 +128,13 @@ def build(image_set, args):
     root = Path(args.indoor360_path)
     assert root.exists(), f'provided Indoor360 path {root} does not exist'
 
-    # PATHS = {
-    #     "train": (root / "images_960", root / "data_list" / 'two_images.json'),
-    #     "val": (root / "images_960", root / "data_list" / 'two_images.json'),
-    #     "test": (root / "images_960", root / "data_list" / 'two_images.json'),
-    # }
-
-    # PATHS = {
-    #     "train": (root / "adaptiveStride_960", root / "data_list" / "adaptiveStride" /'adaptive_train2.json'),
-    #     "val": (root / "adaptiveStride_960", root / "data_list" / "adaptiveStride" / 'adaptive_val.json'),
-    #     "test": (root / "adaptiveStride_960", root / "data_list" / "adaptiveStride" / 'adaptive_test2.json'),
-    # }
+    image_folder = root / "mollweide_960"
+    annot_folder = root / "data_list" / "mollweide"
 
     PATHS = {
-        "train": (root / "mollweide_960", root / "data_list" / "mollweide" /'mollweide_train_100.json'),
-        "val": (root / "mollweide_960", root / "data_list" / "mollweide" / 'mollweide_train_100.json'),
-        "test": (root / "mollweide_960", root / "data_list" / "mollweide" / 'mollweide_train_100.json'),
+        "train": (image_folder, annot_folder /'mollweide_train_100.json'),
+        "val": (image_folder, annot_folder / 'mollweide_train_100.json'),
+        "test": (image_folder, annot_folder / 'mollweide_train_100.json'),
     }
 
     img_folder, ann_file = PATHS[image_set]

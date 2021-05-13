@@ -131,10 +131,13 @@ def build(image_set, args):
     root = Path(args.indoor360_path)
     assert root.exists(), f'provided Indoor360 path {root} does not exist'
 
+    image_folder = root / "mollweide_960"
+    annot_folder = root / "data_list" / "mollweide"
+
     PATHS = {
-        "train": (root / "mollweide_960", root / "data_list" / "mollweide" /'mollweide_train.json'),
-        "val": (root / "mollweide_960", root / "data_list" / "mollweide" /'mollweide_val.json'),
-        "test": (root / "mollweide_960", root / "data_list" / "mollweide" /'mollweide_test.json'),
+        "train": (image_folder, annot_folder /'mollweide_train.json'),
+        "val": (image_folder, annot_folder /'mollweide_val.json'),
+        "test": (image_folder, annot_folder /'mollweide_test.json'),
     }
 
     img_folder, ann_file = PATHS[image_set]
