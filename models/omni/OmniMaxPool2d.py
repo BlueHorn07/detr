@@ -22,7 +22,7 @@ class OmniMaxPool2d(nn.MaxPool2d):
     if isinstance(stride, int):
       self.stride = (stride, stride)
 
-    self.convert_option = "mollweide"
+    self.convert_option = ["mollweide", "adaptive"][1]
     self.strides = None
 
     self.grid = None

@@ -5,7 +5,7 @@ def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
 
     # my new argument
-    parser.add_argument('--omni_backbone', default='None', type=str, choices=('None', 'SphereNet', 'MollWeideNet'),
+    parser.add_argument('--omni_backbone', default='None', type=str, choices=('None', 'sphere', 'mollweide', 'adaptive'),
                         help="Name of the special layer using in backbone")
     parser.add_argument('--indoor360_path', type=str)
 
@@ -74,7 +74,8 @@ def get_args_parser():
     parser.add_argument('--coco_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
-    parser.add_argument('--output_dir', default='',
+    # parser.add_argument('--output_dir', default='',
+    parser.add_argument('--output_dir', default='output', # my code
                         help='path where to save, empty for no saving')
     parser.add_argument('--device', default='cuda',
                         help='device to use for training / testing')

@@ -321,12 +321,12 @@ def build(args):
     # my code
     if args.omni_backbone == 'None':
         backbone = build_backbone(args)
-    elif args.omni_backbone == 'SphereNet':
+    elif args.omni_backbone == 'sphere':
         from .backbone_sphere import build_backbone_sphereNet
         backbone = build_backbone_sphereNet(args)
-    elif args.omni_backbone == 'MollWeideNet':
+    elif args.omni_backbone == 'mollweide' or args.omni_backbone == 'adaptive':
         from .backbone_omni import build_backbone_mollweideNet
-        print("==========  USE Mollweide-Backbone!!  ==========")
+        print("==========  USE %s-Backbone!!  =========="%(args.omni_backbone))
         backbone = build_backbone_mollweideNet(args)
 
     transformer = build_transformer(args)
